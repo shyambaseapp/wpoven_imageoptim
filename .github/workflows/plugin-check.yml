@@ -70,3 +70,20 @@ jobs:
           wp plugin activate wpoven_imageoptim
           wp plugin verify-checksums wpoven_imageoptim
           echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: Run Plugin Check
+        uses: wordpress/plugin-check-action@v1
+        with:
+          exclude-checks: |
+            i18n_usage
+            late_escaping
+          exclude-files: |
+            .gitignore
+            .gitmodules
+          exclude-directories: |
+            includes/libraries/redux-framework
+            includes/libraries/plugin-update-checker
+        env:
+          PLUGIN_DIR: ${{ env.PLUGIN_PATH }}
+          PLUGIN_SLUG: ${{ env.PLUGIN_SLUG }}
+          WP_VERSION: ${{ github.event.inputs.wp_version || 'latest' }}

@@ -61,3 +61,14 @@ jobs:
             🚀 WPOven Image Optimization Release v${{ steps.versions.outputs.plugin_version }}
             Release Date: ${{ steps.versions.outputs.release_date }}
             Tested with WordPress: ${{ github.event.inputs.wp_version || '6.6.2' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md README.txt releases/
+          git commit -m "Release v${{ steps.versions.outputs.plugin_version }} - Update README and add release files" || echo "No changes to commit"
+          git push
+            
