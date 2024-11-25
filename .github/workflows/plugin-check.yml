@@ -49,6 +49,10 @@ jobs:
 
       - name: Install WordPress Core
         run: |
+          cd $WP_PATH
+          sudo mkdir -p $WP_PATH/wp-content/uploads
+          sudo chmod -R 755 $WP_PATH/wp-content/uploads
+          sudo chmod -R 775 $WP_PATH/wp-content/uploads
           wp core install \
             --url="http://localhost" \
             --title="Test Site" \
@@ -68,10 +72,12 @@ jobs:
           git submodule update --init --recursive --force
           sudo cp -r $TEMP_DIR/source/* /var/www/html/wp-content/plugins/wpoven_imageoptim/
           sudo chown -R www-data:www-data /var/www/html/wp-content/plugins/wpoven_imageoptim/
+          rm -rf $TEMP_DIR
 
       - name: Activate and Verify Plugin
         id: plugin-check
         run: |
+          cd $WP_PATH
           wp plugin activate wpoven_imageoptim
           wp plugin verify-checksums wpoven_imageoptim
           echo "status=success" >> $GITHUB_OUTPUT
