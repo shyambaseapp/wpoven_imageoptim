@@ -1,9 +1,9 @@
 # WPOven Image Optimization
 
-![Action Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/php-check.yml/badge.svg)
-![php Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/database-check.yml/badge.svg)
-![node Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/plugin-check.yml/badge.svg)
-![codescan Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/create-release.yml/badge.svg)
+![PHP Status](https://github.com/shyambaseapp/wpoven_imageoptim/actions/workflows/php-check.yml/badge.svg)
+![mySQL Status](https://github.com/shyambaseapp/wpoven_imageoptim/actions/workflows/database-check.yml/badge.svg)
+![Plugin Status](https://github.com/shyambaseapp/wpoven_imageoptim/actions/workflows/plugin-check.yml/badge.svg)
+![Release Status](https://github.com/shyambaseapp/wpoven_imageoptim/actions/workflows/create-release.yml/badge.svg)
 
 **Contributors:** [WPOven](https://www.wpoven.com/)  
 **Requires at least:** 6.6.2  
