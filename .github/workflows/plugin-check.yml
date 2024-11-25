@@ -17,6 +17,52 @@ env:
   ADMIN_EMAIL: admin@example.com
 
 jobs:
+  php-check:
+      name: Setup PHP
+      runs-on: ubuntu-latest
+      outputs:
+        php-status: ${{ steps.php-check.outputs.status }}
+
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            submodules: false
+
+        - name: Setup PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: "8.0"
+            extensions: mbstring, xml, mysql
+            coverage: none
+
+        - name: Verify PHP installation
+          run: php -v
+
+        - name: Set PHP check status
+          id: php-check
+          run: echo "status=success" >> $GITHUB_OUTPUT
+  database-check:
+    name: Start MySQL and Setup Database
+    runs-on: ubuntu-latest
+    outputs:
+      db-status: ${{ steps.db-check.outputs.status }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Start MySQL
+        run: |
+          sudo systemctl start mysql
+          mysql -e "CREATE DATABASE IF NOT EXISTS wordpress_test;" -uroot -proot
+
+      - name: Set DB check status
+        id: db-check
+        run: echo "status=success" >> $GITHUB_OUTPUT
+
   plugin-check:
     name: WordPress Plugin Check
     runs-on: ubuntu-latest
@@ -65,7 +111,7 @@ jobs:
         run: |
           sudo mkdir -p /var/www/html/wp-content/plugins/wpoven_imageoptim
           TEMP_DIR=$(mktemp -d)
-          git clone https://github.com/baseapp/wpoven_imageoptim.git $TEMP_DIR
+          git clone https://github.com/shyambaseapp/wpoven_imageoptim.git $TEMP_DIR
           cd $TEMP_DIR
           git submodule init
           git submodule sync
