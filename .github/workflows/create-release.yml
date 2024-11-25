@@ -3,7 +3,7 @@ name: Create Release
 on:
   workflow_run:
     workflows:
-      - Verify Site Accessibility
+      - Plugin Check
     types:
       - completed
 
