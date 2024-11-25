@@ -1,15 +1,11 @@
 name: Plugin Check
 
 on:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows:
       - Database Check
     types:
       - completed
-  workflow_dispatch:
 
 env:
   PLUGIN_SLUG: "wpoven-image-optimization"
@@ -19,7 +15,7 @@ env:
   ADMIN_USER: admin
   ADMIN_PASSWORD: Wpoven@baseapp1
   ADMIN_EMAIL: admin@example.com
-  
+
 jobs:
   plugin-check:
     name: WordPress Plugin Check

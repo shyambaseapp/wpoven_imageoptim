@@ -1,15 +1,11 @@
 name: Create Release
 
 on:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows:
       - Verify Site Accessibility
     types:
       - completed
-  workflow_dispatch:
 
 env:
   PLUGIN_SLUG: "wpoven-image-optimization"
@@ -19,7 +15,7 @@ env:
   ADMIN_USER: admin
   ADMIN_PASSWORD: Wpoven@baseapp1
   ADMIN_EMAIL: admin@example.com
-  
+
 jobs:
   create-release:
     name: Create Release
