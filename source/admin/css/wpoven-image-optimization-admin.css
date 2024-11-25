@@ -1,0 +1,155 @@
+#heading-overview {
+  background-color: #2d2e30;
+}
+
+#heading-overview h2 {
+  color: white;
+}
+
+#heading-optimize-media-file {
+  background-color: #2d2e30;
+}
+
+#heading-optimize-media-file h2 {
+  color: white;
+}
+
+#graphics > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+#graphics > div {
+  padding-right: 220px;
+  min-width: 300px; /* Ensure a minimum width for each chart */
+}
+
+#pie {
+  width: 340px;
+  height: 340px;
+}
+#doughnut {
+  width: 340px;
+  height: 340px;
+}
+
+@media (max-width: 768px) {
+  #graphics > div {
+    flex-direction: column; /* Stack charts vertically on mobile */
+    align-items: center; /* Center charts */
+    padding-right: 10px;
+  }
+
+  #pie {
+    width: 340px;
+    height: 340px;
+  }
+
+  #doughnut {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+.image-optimization-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.image-optimization-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  width: 500px;
+  text-align: center;
+}
+.icon {
+  width: 60px;
+  height: 60px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+.icon::before {
+  content: "✓";
+  color: white;
+  font-size: 36px;
+}
+
+/* p {
+  color: #85898a;
+  margin: 0 0 20px;
+  font-size: 16px;
+} */
+
+.image-optimization-close-modal {
+  background-color: #e96e66;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.image-optimization-close-modal:hover {
+  background-color: #f15449;
+}
+
+#wpoven-bulk-action {
+  display: inline-block;
+  padding: 6px 10px;
+  background-color: #0073aa;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  user-select: none; /* Prevents text selection */
+}
+
+#wpoven-bulk-action:hover {
+  background-color: #005177;
+}
+
+#wpoven-bulk-action:active {
+  background-color: #003d5a;
+}
+
+#bulk-action-buttons {
+  padding-top: 15px;
+}
+#wpoven-bulk-action-again {
+  display: inline-block;
+  padding: 6px 10px;
+  background-color: #0073aa;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  user-select: none; /* Prevents text selection */
+}
+
+#wpoven-bulk-action-again:hover {
+  background-color: #005177;
+}
+
+#wpoven-bulk-action-again:active {
+  background-color: #003d5a;
+}

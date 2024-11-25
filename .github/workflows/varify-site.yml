@@ -1,0 +1,36 @@
+name: Verify Site Accessibility
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  carify-site:
+    name: Verify Site and Plugin Accessibility
+    runs-on: ubuntu-latest
+    needs: plugin-check
+    outputs:
+      site-status: ${{ steps.site-check.outputs.status }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Verify Plugin Accessibility
+        run: |
+          SITE_URL="http://localhost"
+          PLUGIN_SETTINGS_PAGE="$SITE_URL/wp-admin/admin.php?page=wpoven-image-optimization"
+
+          MAIN_PAGE_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL")
+          SETTINGS_PAGE_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$PLUGIN_SETTINGS_PAGE")
+
+          if [ "$MAIN_PAGE_RESPONSE" != "200" ] || [ "$SETTINGS_PAGE_RESPONSE" != "200" ]; then
+            echo "Site accessibility check failed"
+            exit 1
+          fi
+
+          echo "status=success" >> $GITHUB_OUTPUT

@@ -1,0 +1,68 @@
+name: Plugin Check
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  plugin-check:
+    name: WordPress Plugin Check
+    runs-on: ubuntu-latest
+    needs: database-check
+    outputs:
+      plugin-status: ${{ steps.plugin-check.outputs.status }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Setup WordPress
+        run: |
+          wget https://wordpress.org/latest.tar.gz
+          sudo tar -xzf latest.tar.gz -C /var/www/html --strip-components=1
+          sudo cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+          sudo sed -i 's/database_name_here/wordpress_test/' /var/www/html/wp-config.php
+          sudo sed -i 's/username_here/root/' /var/www/html/wp-config.php
+          sudo sed -i 's/password_here/root/' /var/www/html/wp-config.php
+          sudo chown -R www-data:www-data /var/www/html
+          sudo chmod -R 755 /var/www/html
+          sudo service apache2 start
+
+      - name: Install WP-CLI
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+
+      - name: Install WordPress Core
+        run: |
+          wp core install \
+            --url="http://localhost" \
+            --title="Test Site" \
+            --admin_user="admin" \
+            --admin_password="Wpoven@baseapp1" \
+            --admin_email="admin@example.com" \
+            --skip-email
+
+      - name: Setup Plugin
+        run: |
+          sudo mkdir -p /var/www/html/wp-content/plugins/wpoven_imageoptim
+          TEMP_DIR=$(mktemp -d)
+          git clone https://github.com/baseapp/wpoven_imageoptim.git $TEMP_DIR
+          cd $TEMP_DIR
+          git submodule init
+          git submodule sync
+          git submodule update --init --recursive --force
+          sudo cp -r $TEMP_DIR/source/* /var/www/html/wp-content/plugins/wpoven_imageoptim/
+          sudo chown -R www-data:www-data /var/www/html/wp-content/plugins/wpoven_imageoptim/
+
+      - name: Activate and Verify Plugin
+        id: plugin-check
+        run: |
+          wp plugin activate wpoven_imageoptim
+          wp plugin verify-checksums wpoven_imageoptim
+          echo "status=success" >> $GITHUB_OUTPUT
