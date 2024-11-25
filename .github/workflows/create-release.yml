@@ -11,6 +11,15 @@ on:
       - completed
   workflow_dispatch:
 
+env:
+  PLUGIN_SLUG: "wpoven-image-optimization"
+  WP_PATH: /var/www/html
+  PLUGIN_PATH: /var/www/html/wp-content/plugins/wpoven_imageoptim
+  WORDPRESS_URL: http://localhost
+  ADMIN_USER: admin
+  ADMIN_PASSWORD: Wpoven@baseapp1
+  ADMIN_EMAIL: admin@example.com
+  
 jobs:
   create-release:
     name: Create Release
