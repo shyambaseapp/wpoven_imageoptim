@@ -3,7 +3,6 @@
 ![Action Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/php-check.yml/badge.svg)
 ![php Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/database-check.yml/badge.svg)
 ![node Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/plugin-check.yml/badge.svg)
-![eslint Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/varify-site.yml/badge.svg)
 ![codescan Status](https://github.com/shyambaseapp/wpoven_imageozm/actions/workflows/create-release.yml/badge.svg)
 
 **Contributors:** [WPOven](https://www.wpoven.com/)  
