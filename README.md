@@ -7,7 +7,7 @@
 
 **Contributors:** [WPOven](https://www.wpoven.com/)  
 **Requires at least:** 6.6.2  
-**Tested up to:** 6.7  
+**Tested up to:** 6.6.2  
 **Stable tag:** 1.0.0  
 **License:** GPLv2 or later  
 **License URI:** [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
@@ -42,7 +42,7 @@ efficient, and optimized for a superior user experience.
 
    - To get the latest version of WPOven Image Optimization, you can either:
      - [Visit WPOven's website](https://www.wpoven.com/plugins/wpoven-image-optimization) to learn more about the plugin.
-     - Download directly from the GitHub repository: [Download](https://github.com/baseapp/wpoven_imageoptim/releases/download/1.0.0/wpoven-image-optimization-2024-11-12.zip).
+     - Download directly from the GitHub repository: [Download](https://github.com/baseapp/wpoven_imageoptim/releases/download/1.0.0/wpoven-image-optimization-2024-11-25.zip).
 
 2. **Upload the Plugin:**
 
