@@ -4,13 +4,17 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Plugin Check
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   carify-site:
     name: Verify Site and Plugin Accessibility
     runs-on: ubuntu-latest
-    needs: plugin-check
     outputs:
       site-status: ${{ steps.site-check.outputs.status }}
 

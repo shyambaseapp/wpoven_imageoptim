@@ -4,13 +4,17 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Database Check
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   plugin-check:
     name: WordPress Plugin Check
     runs-on: ubuntu-latest
-    needs: database-check
     outputs:
       plugin-status: ${{ steps.plugin-check.outputs.status }}
 

@@ -4,13 +4,17 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Verify Site Accessibility
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: carify-site
     if: needs.carify-site.outputs.site-status == 'success'
     permissions:
       contents: write
