@@ -42,7 +42,7 @@ efficient, and optimized for a superior user experience.
 
    - To get the latest version of WPOven Image Optimization, you can either:
      - [Visit WPOven's website](https://www.wpoven.com/plugins/wpoven-image-optimization) to learn more about the plugin.
-     - Download directly from the GitHub repository: [Download](https://github.com/baseapp/wpoven_imageoptim/releases/download/1.0.0/wpoven-image-optimization-2024-11-25.zip).
+     - Download directly from the GitHub repository: [Download](https://github.com/baseapp/wpoven_imageoptim/releases/download/1.0.0/wpoven-image-optimization-2024-11-26.zip).
 
 2. **Upload the Plugin:**
 
