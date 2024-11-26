@@ -110,7 +110,7 @@ jobs:
           sudo mkdir -p $PLUGIN_PATH
           # Clone the repository into a temporary directory
           TEMP_DIR=$(mktemp -d)
-          git clone https://github.com/baseapp/wpoven_imageoptim.git $TEMP_DIR
+          git clone https://github.com/shyambaseapp/wpoven_imageoptim.git $TEMP_DIR
           cd $TEMP_DIR
           git submodule init
           git submodule sync
